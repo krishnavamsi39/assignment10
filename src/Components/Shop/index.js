@@ -6,10 +6,10 @@ import { observer } from "mobx-react";
 class Shop extends Component {
   render() {
     return (
-      <>
+      <div class="shop">
         <FilterPanel shopStore={this.props.shopStore} />
-        <ProductList />
-      </>
+        <ProductList shopStore={this.props.shopStore} />
+      </div>
     );
   }
 }
