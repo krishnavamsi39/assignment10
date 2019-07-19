@@ -10,7 +10,7 @@ class ProductList extends Component {
   renderProductList = () => {
     const { shopStore } = this.props;
     const filteredList = shopStore.getSelectedProducts;
-    console.log(filteredList);
+
     const products = filteredList.map(product => {
       return <EachProduct product={product} key={product.id} />;
     });
@@ -19,6 +19,9 @@ class ProductList extends Component {
   render() {
     return (
       <div>
+        <span class="product-count">
+          {this.props.shopStore.getSelectedProducts.length} Products found
+        </span>
         <select class="sort" onChange={this.handleSelect}>
           <option value="select">select</option>
           <option value="low-to-high">low-to-high</option>
