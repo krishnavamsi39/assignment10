@@ -1,4 +1,4 @@
-import { observable, action } from "mobx";
+import { observable, action, computed } from "mobx";
 class ShopStore {
   productList = [
     {
@@ -14,7 +14,7 @@ class ShopStore {
       style: "Black with custom print",
       title: "Cat Tee Black T-Shirt",
       image:
-        "https://react-shopping-cart-67954.firebaseapp.com/static/media/12064273040195392_1.2995d79a.jpg"
+        "https:react-shopping-cart-67954.firebaseapp.com/static/media/12064273040195392_1.2995d79a.jpg"
     },
     {
       availableSizes: ["M"],
@@ -29,7 +29,7 @@ class ShopStore {
       style: "Front print and paisley print",
       title: "Dark Thug Blue-Navy T-Shirt",
       image:
-        "https://react-shopping-cart-67954.firebaseapp.com/static/media/51498472915966370_1.df947f14.jpg"
+        "https:react-shopping-cart-67954.firebaseapp.com/static/media/51498472915966370_1.df947f14.jpg"
     },
     {
       availableSizes: ["X", "L", "XL"],
@@ -244,7 +244,10 @@ class ShopStore {
   ];
 
   @observable selectedSizes = [];
-
+  @observable selectSortBy = "select";
+  @action changeSelectSortBy(value) {
+    this.selectSortBy = value;
+  }
   @action AddorRemoveSizes(value) {
     let index = this.selectedSizes.indexOf(value);
     if (index === -1) {
@@ -252,7 +255,36 @@ class ShopStore {
     } else {
       this.selectedSizes.splice(index, 1);
     }
-    console.log(this.selectedSizes);
+  }
+  @computed get getSelectedProducts() {
+    let filteredList = this.productList.slice();
+
+    if (this.selectedSizes.length !== 0) {
+      filteredList = [];
+      this.selectedSizes.map(size => {
+        this.productList.map(product => {
+          if (
+            product.availableSizes.indexOf(size) !== -1 &&
+            filteredList.indexOf(product) === -1
+          ) {
+            filteredList.push(product);
+          }
+        });
+      });
+    }
+
+    if (this.selectSortBy === "low-to-high") {
+      filteredList.sort((a, b) => {
+        return a.price > b.price ? 1 : b.price > a.price ? -1 : 0;
+      });
+    }
+    if (this.selectSortBy === "high-to-low") {
+      filteredList.sort((a, b) => {
+        return a.price < b.price ? 1 : b.price > a.price ? -1 : 0;
+      });
+    }
+
+    return filteredList;
   }
 }
 export default ShopStore;

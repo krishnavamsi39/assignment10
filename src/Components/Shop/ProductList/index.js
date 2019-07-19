@@ -1,29 +1,32 @@
 import React, { Component } from "react";
 import "./style.css";
-
+import EachProduct from "./EachProduct";
+import { observer } from "mobx-react";
+@observer
 class ProductList extends Component {
+  handleSelect = e => {
+    this.props.shopStore.changeSelectSortBy(e.target.value);
+  };
   renderProductList = () => {
     const { shopStore } = this.props;
-    let eachproduct = shopStore.productList[0];
-    return (
-      <div class="item-div">
-        {eachproduct.isFreeShipping ? (
-          <div class="free-ship">Free Shipping</div>
-        ) : (
-          <></>
-        )}
-        <img src={eachproduct.image} />
-        <p>{eachproduct.title}</p>
-        <span>
-          {eachproduct.currencyFormat}
-          {eachproduct.price}
-        </span>
-        <button class="cart">Add to cart</button>
-      </div>
-    );
+    const filteredList = shopStore.getSelectedProducts;
+    console.log(filteredList);
+    const products = filteredList.map(product => {
+      return <EachProduct product={product} key={product.id} />;
+    });
+    return products;
   };
   render() {
-    return <>{this.renderProductList()}</>;
+    return (
+      <div>
+        <select class="sort" onChange={this.handleSelect}>
+          <option value="select">select</option>
+          <option value="low-to-high">low-to-high</option>
+          <option value="high-to-low">high-to-low</option>
+        </select>
+        <div class="all-products">{this.renderProductList()}</div>
+      </div>
+    );
   }
 }
 export default ProductList;
