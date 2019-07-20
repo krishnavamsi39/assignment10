@@ -4,18 +4,12 @@ import EachCartItem from "./EachCartItem";
 @observer
 class CartItems extends Component {
   renderCartItems = () => {
-    const { shopStore, cartStore } = this.props;
-
-    const a = [...cartStore.cartMap.keys()];
+    const { shopStore } = this.props;
+    console.log(shopStore);
+    const a = [...shopStore.cartStore.cartMap.keys()];
 
     const rows = a.map(cartItem => {
-      return (
-        <EachCartItem
-          cartItem={cartItem}
-          cartStore={cartStore}
-          shopStore={shopStore}
-        />
-      );
+      return <EachCartItem cartItem={cartItem} shopStore={shopStore} />;
     });
     return rows;
   };

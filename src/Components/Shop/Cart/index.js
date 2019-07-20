@@ -38,12 +38,9 @@ class Cart extends Component {
         />
 
         <div className={this.state.classdiv}>
-          <CartHeader cartStore={this.props.cartStore} />
-          <CartItems
-            shopStore={this.props.shopStore}
-            cartStore={this.props.cartStore}
-          />
-          <CartTotal cartStore={this.props.cartStore} />
+          <CartHeader shopStore={this.props.shopStore} />
+          <CartItems shopStore={this.props.shopStore} />
+          <CartTotal shopStore={this.props.shopStore} />
         </div>
       </div>
     );

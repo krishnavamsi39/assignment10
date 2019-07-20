@@ -9,14 +9,8 @@ class Shop extends Component {
     return (
       <div class="shop">
         <FilterPanel shopStore={this.props.shopStore} />
-        <ProductList
-          shopStore={this.props.shopStore}
-          cartStore={this.props.cartStore}
-        />
-        <Cart
-          shopStore={this.props.shopStore}
-          cartStore={this.props.cartStore}
-        />
+        <ProductList shopStore={this.props.shopStore} />
+        <Cart shopStore={this.props.shopStore} />
       </div>
     );
   }

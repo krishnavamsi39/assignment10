@@ -7,7 +7,9 @@ class CartTotal extends Component {
     return (
       <div class="cart-footer">
         <span class="footer-heading">SUBTOTAL</span>
-        <span class="total-price">${this.props.cartStore.total} </span>
+        <span class="total-price">
+          ${this.props.shopStore.cartStore.total}{" "}
+        </span>
       </div>
     );
   }

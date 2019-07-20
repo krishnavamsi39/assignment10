@@ -12,7 +12,10 @@ class CartHeader extends Component {
           height="40px"
           onClick={this.handleClick}
         />
-        <div className="cart-count"> {this.props.cartStore.cartCount}</div>
+        <div className="cart-count">
+          {" "}
+          {this.props.shopStore.cartStore.cartCount}
+        </div>
         <span>Cart</span>
       </div>
     );

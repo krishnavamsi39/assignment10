@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 @observer
 class EachCartItem extends Component {
   handleClick = () => {
-    this.props.cartStore.removeFromCart(this.props.cartItem);
+    this.props.shopStore.cartStore.removeFromCart(this.props.cartItem);
   };
   renderItem = () => {
     const productList = this.props.shopStore.productList;
@@ -14,7 +14,8 @@ class EachCartItem extends Component {
           <div class="cart-item-div">
             <img className="cart-image" src={product.image} height="150px" />
             <span className="item-quantity">
-              Quantity: {this.props.cartStore.cartMap.get(this.props.cartItem)}
+              Quantity:{" "}
+              {this.props.shopStore.cartStore.cartMap.get(this.props.cartItem)}
             </span>
             <span className="item-size">{product.availableSizes[0]}</span>
             <span className="item-title">{product.title}</span>

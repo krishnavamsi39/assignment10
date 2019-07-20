@@ -2,6 +2,10 @@ import { observable, action, computed } from "mobx";
 import productList from "../../Constants/productList";
 
 class CartStore {
+  shopStore;
+  constructor(shopStore) {
+    this.shopStore = shopStore;
+  }
   @observable cartMap = new Map();
   @computed get total() {
     const cartIds = [...this.cartMap.keys()];

@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 @observer
 class EachProduct extends Component {
   handleClick = () => {
-    this.props.cartStore.addToCart(this.props.product.id);
+    this.props.shopStore.cartStore.addToCart(this.props.product.id);
   };
   render() {
     const { product } = this.props;

@@ -2,6 +2,9 @@ import { observable, action, computed } from "mobx";
 import products from "../../Constants/productList";
 import CartStore from "../CartStore";
 class ShopStore {
+  constructor() {
+    this.cartStore = new CartStore(this);
+  }
   productList = products;
   @observable selectedSizes = [];
   @observable selectSortBy = "select";
