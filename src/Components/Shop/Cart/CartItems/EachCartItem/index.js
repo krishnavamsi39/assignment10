@@ -12,13 +12,14 @@ class EachCartItem extends Component {
       if (product.id === this.props.cartItem) {
         return (
           <div class="cart-item-div">
-            <img src={product.image} height="150px" />
-            <span>
-              Quantity {this.props.cartStore.cartMap.get(this.props.cartItem)}
+            <img className="cart-image" src={product.image} height="150px" />
+            <span className="item-quantity">
+              Quantity: {this.props.cartStore.cartMap.get(this.props.cartItem)}
             </span>
             <span className="item-title">{product.title}</span>
             <span className="item-price">${product.price}</span>
             <img
+              className="delete-icon"
               src="assets/smallcross.png"
               height="30px"
               onClick={this.handleClick}

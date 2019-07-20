@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 import CartHeader from "./CartHeader";
 import CartItems from "./CartItems";
+import CartTotal from "./CartTotal";
 import { observer } from "mobx-react";
 @observer
 class Cart extends Component {
@@ -42,6 +43,7 @@ class Cart extends Component {
             shopStore={this.props.shopStore}
             cartStore={this.props.cartStore}
           />
+          <CartTotal cartStore={this.props.cartStore} />
         </div>
       </div>
     );

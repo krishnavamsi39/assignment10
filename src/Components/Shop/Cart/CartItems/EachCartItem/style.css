@@ -7,9 +7,25 @@
 .item-title {
   position: relative;
   top: 60px;
-  right: 150px;
+  right: 170px;
   color: white;
+  font-size: 22px;
 }
 .item-price {
   color: yellow;
+  position: relative;
+  top: 80px;
+  left: 100px;
+  font-size: 20px;
+}
+.delete-icon {
+  position: relative;
+  top: 20px;
+  left: 0px;
+}
+.item-quantity {
+  position: relative;
+  top: 100px;
+  right: 30px;
+  color: grey;
 }

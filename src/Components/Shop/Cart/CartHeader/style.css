@@ -1,0 +1,6 @@
+.cart-header {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  border: solid 1px black;
+}
