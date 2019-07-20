@@ -1,0 +1,27 @@
+.cart-image {
+  position: relative;
+  top: 0px;
+  right: 0px;
+}
+.cart-box {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: flex;
+}
+.division1 {
+  width: 0px;
+  height: 1000px;
+  background-color: black;
+  transition: 0.5s;
+  visibility: hidden;
+}
+
+.division2 {
+  width: 800px;
+  height: 1000px;
+  background-color: rgba(0, 0, 0, 0.97);
+  display: flex;
+  justify-content: center;
+  transition: 0.5s;
+}

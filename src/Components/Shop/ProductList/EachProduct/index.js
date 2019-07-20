@@ -3,6 +3,9 @@ import "./style.css";
 import { observer } from "mobx-react";
 @observer
 class EachProduct extends Component {
+  handleClick = () => {
+    this.props.cartStore.addToCart(this.props.product.id);
+  };
   render() {
     const { product } = this.props;
     return (
@@ -18,7 +21,9 @@ class EachProduct extends Component {
           {product.currencyFormat}
           {product.price}
         </span>
-        <button class="cart">Add to cart</button>
+        <button class="cart" onClick={this.handleClick}>
+          Add to cart
+        </button>
       </div>
     );
   }

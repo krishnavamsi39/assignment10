@@ -12,7 +12,14 @@ class ProductList extends Component {
     const filteredList = shopStore.getSelectedProducts;
 
     const products = filteredList.map(product => {
-      return <EachProduct product={product} key={product.id} />;
+      return (
+        <EachProduct
+          shopStore={shopStore}
+          product={product}
+          key={product.id}
+          cartStore={this.props.cartStore}
+        />
+      );
     });
     return products;
   };
@@ -20,7 +27,7 @@ class ProductList extends Component {
     return (
       <div>
         <span class="product-count">
-          {this.props.shopStore.getSelectedProducts.length} Products found
+          {this.props.shopStore.getSelectedProducts.length} Product(s) found
         </span>
         <select class="sort" onChange={this.handleSelect}>
           <option value="select">select</option>
