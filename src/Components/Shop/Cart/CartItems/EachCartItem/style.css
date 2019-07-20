@@ -1,0 +1,15 @@
+.cart-item-div {
+  display: flex;
+  height: 200px;
+  justify-content: space-around;
+  border: 1px solid black;
+}
+.item-title {
+  position: relative;
+  top: 60px;
+  right: 150px;
+  color: white;
+}
+.item-price {
+  color: yellow;
+}

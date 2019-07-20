@@ -13,7 +13,7 @@ class Cart extends Component {
   }
   handleClick = () => {
     this.value = !this.value;
-    console.log(this.value);
+
     if (this.value === true) {
       this.src = "assets/cross.png";
       this.setState({
