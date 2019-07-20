@@ -16,6 +16,7 @@ class EachCartItem extends Component {
             <span className="item-quantity">
               Quantity: {this.props.cartStore.cartMap.get(this.props.cartItem)}
             </span>
+            <span className="item-size">{product.availableSizes[0]}</span>
             <span className="item-title">{product.title}</span>
             <span className="item-price">${product.price}</span>
             <img

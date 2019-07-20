@@ -15,6 +15,14 @@ class CartStore {
     });
     return total;
   }
+  @computed get cartCount() {
+    const cartIds = [...this.cartMap.keys()];
+    let cartCount = 0;
+    cartIds.map(id => {
+      cartCount = cartCount + this.cartMap.get(id);
+    });
+    return cartCount;
+  }
   @action removeFromCart(id) {
     this.cartMap.delete(id);
   }

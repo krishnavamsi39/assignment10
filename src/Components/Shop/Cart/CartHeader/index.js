@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
+import { observer } from "mobx-react";
+@observer
 class CartHeader extends Component {
   render() {
     return (
@@ -10,6 +12,7 @@ class CartHeader extends Component {
           height="40px"
           onClick={this.handleClick}
         />
+        <div className="cart-count"> {this.props.cartStore.cartCount}</div>
         <span>Cart</span>
       </div>
     );

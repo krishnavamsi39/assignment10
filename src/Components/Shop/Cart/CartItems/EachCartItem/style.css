@@ -3,11 +3,12 @@
   height: 200px;
   justify-content: space-around;
   border: 1px solid black;
+  margin-top: 20px;
 }
 .item-title {
   position: relative;
-  top: 60px;
-  right: 170px;
+  top: 50px;
+  right: 190px;
   color: white;
   font-size: 22px;
 }
@@ -15,7 +16,7 @@
   color: yellow;
   position: relative;
   top: 80px;
-  left: 100px;
+  left: 80px;
   font-size: 20px;
 }
 .delete-icon {
@@ -27,5 +28,15 @@
   position: relative;
   top: 100px;
   right: 30px;
+  color: grey;
+}
+.cart-image {
+  position: relative;
+  top: 10px;
+}
+.item-size {
+  position: relative;
+  top: 80px;
+  right: 130px;
   color: grey;
 }

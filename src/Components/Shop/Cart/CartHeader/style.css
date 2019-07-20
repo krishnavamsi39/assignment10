@@ -4,3 +4,14 @@
   justify-content: center;
   border: solid 1px black;
 }
+.cart-count {
+  background-color: yellow;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  color: black;
+  text-align: center;
+  position: relative;
+  top: 30px;
+  right: 10px;
+}
