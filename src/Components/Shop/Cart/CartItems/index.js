@@ -9,7 +9,13 @@ class CartItems extends Component {
     const cartIds = [...shopStore.cartStore.cartMap.keys()];
 
     const rows = cartIds.map(cartItem => {
-      return <EachCartItem cartItem={cartItem} shopStore={shopStore} />;
+      return (
+        <EachCartItem
+          cartItem={cartItem}
+          shopStore={shopStore}
+          key={cartItem}
+        />
+      );
     });
     return rows;
   };

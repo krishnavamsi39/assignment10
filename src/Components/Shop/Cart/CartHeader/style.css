@@ -5,6 +5,9 @@
   border: solid 1px black;
 }
 .cart-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: yellow;
   height: 30px;
   width: 30px;
@@ -17,6 +20,6 @@
 }
 .cart-heading {
   top: 10px;
-  font-size: 30px;
+  font-size: 35px;
   position: relative;
 }
