@@ -13,7 +13,7 @@ class ProductList extends Component {
 
     const products = filteredList.map(product => {
       return (
-        <EachProduct shopStore={shopStore} product={product} key={product.id} />
+        <EachProduct shopStore={shopStore} {...product} key={product.id} />
       );
     });
     return products;

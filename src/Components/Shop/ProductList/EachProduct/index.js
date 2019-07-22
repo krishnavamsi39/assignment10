@@ -4,30 +4,38 @@ import { observer } from "mobx-react";
 @observer
 class EachProduct extends Component {
   handleClick = () => {
-    this.props.shopStore.cartStore.addToCart(this.props.product.id);
+    const { id } = this.props;
+    this.props.shopStore.cartStore.addToCart(id);
   };
   installmentPrice = () => {
-    const { product } = this.props;
-    return (product.price / product.installments).toFixed(2);
+    const { price, installments } = this.props;
+    return (price / installments).toFixed(2);
   };
   render() {
-    const { product } = this.props;
+    const {
+      title,
+      price,
+      currencyFormat,
+      installments,
+      image,
+      isFreeShipping
+    } = this.props;
     return (
       <div class="item-div">
-        {product.isFreeShipping ? (
+        {isFreeShipping ? (
           <button class="free-ship">Free Shipping</button>
         ) : (
           <></>
         )}
-        <img src={product.image} />
-        <p>{product.title}</p>
+        <img src={image} />
+        <p>{title}</p>
         <span>
-          {product.currencyFormat}
-          {product.price}
+          {currencyFormat}
+          {price}
         </span>
-        {product.installments > 1 ? (
+        {installments > 1 ? (
           <span class>
-            or {product.installments}x${this.installmentPrice()}
+            or {installments}x${this.installmentPrice()}
           </span>
         ) : (
           <></>
