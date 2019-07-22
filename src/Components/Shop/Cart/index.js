@@ -9,6 +9,7 @@ class Cart extends Component {
   constructor(props) {
     super(props);
     this.value = 0;
+    this.cartcountclass = "cart-count";
     this.src = "assets/images.png";
     this.state = { classdiv: "division1" };
   }
@@ -16,11 +17,13 @@ class Cart extends Component {
     this.value = !this.value;
 
     if (this.value === true) {
+      this.cartcountclass = "cart-count-hide";
       this.src = "assets/cross.png";
       this.setState({
         classdiv: "division2"
       });
     } else {
+      this.cartcountclass = "cart-count";
       this.src = "assets/images.png";
       this.setState({
         classdiv: "division1"
@@ -36,7 +39,10 @@ class Cart extends Component {
           height="40px"
           onClick={this.handleClick}
         />
-
+        <div className={this.cartcountclass}>
+          {" "}
+          {this.props.shopStore.cartStore.cartCount}
+        </div>
         <div className={this.state.classdiv}>
           <CartHeader shopStore={this.props.shopStore} />
           <CartItems shopStore={this.props.shopStore} />

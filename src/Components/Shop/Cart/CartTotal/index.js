@@ -5,12 +5,18 @@ import { observer } from "mobx-react";
 class CartTotal extends Component {
   render() {
     return (
-      <div class="cart-footer">
-        <span class="footer-heading">SUBTOTAL</span>
-        <span class="total-price">
-          ${this.props.shopStore.cartStore.total}{" "}
-        </span>
-      </div>
+      <>
+        {this.props.shopStore.cartStore.cartMap.size > 0 ? (
+          <div class="cart-footer">
+            <span class="footer-heading">SUBTOTAL</span>
+            <span class="total-price">
+              ${this.props.shopStore.cartStore.total}{" "}
+            </span>
+          </div>
+        ) : (
+          <span class="empty-cart">Add Some Products To Cart</span>
+        )}
+      </>
     );
   }
 }

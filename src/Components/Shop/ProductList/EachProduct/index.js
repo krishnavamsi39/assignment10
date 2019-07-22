@@ -6,6 +6,10 @@ class EachProduct extends Component {
   handleClick = () => {
     this.props.shopStore.cartStore.addToCart(this.props.product.id);
   };
+  installmentPrice = () => {
+    const { product } = this.props;
+    return (product.price / product.installments).toFixed(2);
+  };
   render() {
     const { product } = this.props;
     return (
@@ -21,6 +25,13 @@ class EachProduct extends Component {
           {product.currencyFormat}
           {product.price}
         </span>
+        {product.installments > 1 ? (
+          <span class>
+            or {product.installments}x${this.installmentPrice()}
+          </span>
+        ) : (
+          <></>
+        )}
         <button class="cart" onClick={this.handleClick}>
           Add to cart
         </button>

@@ -1,5 +1,4 @@
 import { observable, action, computed } from "mobx";
-import productList from "../../Constants/productList";
 
 class CartStore {
   shopStore;
@@ -8,16 +7,15 @@ class CartStore {
   }
   @observable cartMap = new Map();
   @computed get total() {
-    const cartIds = [...this.cartMap.keys()];
     let total = 0;
-    cartIds.map(id => {
-      productList.map(product => {
-        if (id === product.id) {
-          total = total + product.price * this.cartMap.get(id);
-        }
-      });
+
+    this.shopStore.productList.map(product => {
+      if (this.cartMap.has(product.id)) {
+        total = total + product.price * this.cartMap.get(product.id);
+      }
     });
-    return total;
+
+    return total.toFixed(2);
   }
   @computed get cartCount() {
     const cartIds = [...this.cartMap.keys()];

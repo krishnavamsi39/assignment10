@@ -5,10 +5,10 @@ import EachCartItem from "./EachCartItem";
 class CartItems extends Component {
   renderCartItems = () => {
     const { shopStore } = this.props;
-    console.log(shopStore);
-    const a = [...shopStore.cartStore.cartMap.keys()];
 
-    const rows = a.map(cartItem => {
+    const cartIds = [...shopStore.cartStore.cartMap.keys()];
+
+    const rows = cartIds.map(cartItem => {
       return <EachCartItem cartItem={cartItem} shopStore={shopStore} />;
     });
     return rows;
