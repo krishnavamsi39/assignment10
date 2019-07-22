@@ -9,6 +9,7 @@ class CartTotal extends Component {
         {this.props.shopStore.cartStore.cartMap.size > 0 ? (
           <div class="cart-footer">
             <span class="footer-heading">SUBTOTAL</span>
+            <button class="check-out">CheckOut</button>
             <span class="total-price">
               ${this.props.shopStore.cartStore.total}{" "}
             </span>

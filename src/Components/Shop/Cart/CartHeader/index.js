@@ -16,7 +16,7 @@ class CartHeader extends Component {
           {" "}
           {this.props.shopStore.cartStore.cartCount}
         </div>
-        <span>Cart</span>
+        <span class="cart-heading">Cart</span>
       </div>
     );
   }

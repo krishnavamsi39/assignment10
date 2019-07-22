@@ -11,7 +11,7 @@ class Cart extends Component {
     this.value = 0;
     this.cartcountclass = "cart-count";
     this.src = "assets/images.png";
-    this.state = { classdiv: "division1" };
+    this.state = { classdiv: "cart-display-hide" };
   }
   handleClick = () => {
     this.value = !this.value;
@@ -20,13 +20,13 @@ class Cart extends Component {
       this.cartcountclass = "cart-count-hide";
       this.src = "assets/cross.png";
       this.setState({
-        classdiv: "division2"
+        classdiv: "cart-display"
       });
     } else {
       this.cartcountclass = "cart-count";
       this.src = "assets/images.png";
       this.setState({
-        classdiv: "division1"
+        classdiv: "cart-display-hide"
       });
     }
   };

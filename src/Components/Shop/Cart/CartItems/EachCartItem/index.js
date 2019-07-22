@@ -13,17 +13,22 @@ class EachCartItem extends Component {
         return (
           <div class="cart-item-div">
             <img className="cart-image" src={product.image} height="150px" />
-            <span className="item-quantity">
-              Quantity:{" "}
-              {this.props.shopStore.cartStore.cartMap.get(this.props.cartItem)}
-            </span>
-            <span className="item-size">{product.availableSizes[0]}</span>
-            <span className="item-title">{product.title}</span>
+            <div class="item-properties">
+              <span className="item-title">{product.title}</span>
+              <span className="item-size">{product.availableSizes[0]}</span>
+              <span className="item-quantity">
+                Quantity:{" "}
+                {this.props.shopStore.cartStore.cartMap.get(
+                  this.props.cartItem
+                )}
+              </span>
+            </div>
             <span className="item-price">${product.price}</span>
             <img
               className="delete-icon"
               src="assets/smallcross.png"
               height="30px"
+              width="30px"
               onClick={this.handleClick}
             />
           </div>

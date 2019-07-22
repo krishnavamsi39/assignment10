@@ -2,14 +2,15 @@
   position: relative;
   top: 0px;
   right: 0px;
+  cursor: pointer;
 }
 .cart-box {
-  position: absolute;
+  position: fixed;
   top: 0px;
   right: 0px;
   display: flex;
 }
-.division1 {
+.cart-display-hide {
   width: 0px;
   height: 1000px;
   background-color: black;
@@ -17,13 +18,31 @@
   visibility: hidden;
 }
 
-.division2 {
+.cart-display {
   width: 800px;
   height: 1000px;
-  background-color: rgba(0, 0, 0, 0.97);
+  background-color: rgba(0, 0, 0, 0.93);
   display: flex;
   color: white;
   flex-direction: column;
   transition: 0.5s;
   overflow: scroll;
+}
+.empty-cart {
+  font-size: 30px;
+  text-align: center;
+}
+.cart-count {
+  background-color: yellow;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  color: black;
+  text-align: center;
+  position: relative;
+  top: 30px;
+  right: 10px;
+}
+.cart-count-hide {
+  visibility: hidden;
 }
