@@ -2,10 +2,22 @@ import { observable, action, computed } from "mobx";
 import products from "../../Constants/productList";
 import CartStore from "../CartStore";
 class ShopStore {
+  @observable productList = [];
+  @observable isLoaded = false;
+  @observable data;
   constructor() {
     this.cartStore = new CartStore(this);
   }
-  productList = products;
+
+  getProducts() {
+    fetch("https://demo8129378.mockable.io/products/all/v1")
+      .then(res => res.json())
+      .then(output => {
+        this.isLoaded = true;
+        this.productList = output.products;
+      });
+  }
+
   @observable selectedSizes = [];
   @observable selectSortBy = "select";
   @action changeSelectSortBy(value) {

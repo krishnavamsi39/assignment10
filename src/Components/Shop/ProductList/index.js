@@ -4,6 +4,9 @@ import EachProduct from "./EachProduct";
 import { observer } from "mobx-react";
 @observer
 class ProductList extends Component {
+  componentDidMount() {
+    this.props.shopStore.getProducts();
+  }
   handleSelect = e => {
     this.props.shopStore.changeSelectSortBy(e.target.value);
   };
