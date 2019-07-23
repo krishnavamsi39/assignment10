@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./style.css";
 import EachProduct from "./EachProduct";
+import Loader from "./Loader";
+import ErrorMessage from "./ErrorMessage";
 import { observer } from "mobx-react";
 @observer
 class ProductList extends Component {
@@ -21,6 +23,15 @@ class ProductList extends Component {
     });
     return products;
   };
+  renderMainPage = () => {
+    if (this.props.shopStore.apiState === "Failure") {
+      return <ErrorMessage />;
+    } else if (this.props.shopStore.apiState === "Loading") {
+      return <Loader />;
+    } else {
+      return <div class="all-products">{this.renderProductList()}</div>;
+    }
+  };
   render() {
     return (
       <div>
@@ -32,7 +43,7 @@ class ProductList extends Component {
           <option value="low-to-high">low-to-high</option>
           <option value="high-to-low">high-to-low</option>
         </select>
-        <div class="all-products">{this.renderProductList()}</div>
+        {this.renderMainPage()}
       </div>
     );
   }

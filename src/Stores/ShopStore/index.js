@@ -3,18 +3,23 @@ import products from "../../Constants/productList";
 import CartStore from "../CartStore";
 class ShopStore {
   @observable productList = [];
-  @observable isLoaded = false;
-  @observable data;
+  @observable apiState = "Loading";
+
   constructor() {
     this.cartStore = new CartStore(this);
   }
 
   getProducts() {
     fetch("https://demo8129378.mockable.io/products/all/v1")
-      .then(res => res.json())
+      .then(res => {
+        return res.json();
+      })
       .then(output => {
-        this.isLoaded = true;
         this.productList = output.products;
+        this.apiState = "Success";
+      })
+      .catch(err => {
+        this.apiState = "Failure";
       });
   }
 
