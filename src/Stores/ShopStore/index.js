@@ -1,9 +1,10 @@
 import { observable, action, computed } from "mobx";
 import products from "../../Constants/productList";
 import CartStore from "../CartStore";
+import apiStates from "../../Constants/apiState";
 class ShopStore {
   @observable productList = [];
-  @observable apiState = "Loading";
+  @observable apiState = apiStates.loading;
 
   constructor() {
     this.cartStore = new CartStore(this);
@@ -16,10 +17,10 @@ class ShopStore {
       })
       .then(output => {
         this.productList = output.products;
-        this.apiState = "Success";
+        this.apiState = apiStates.success;
       })
       .catch(err => {
-        this.apiState = "Failure";
+        this.apiState = apiStates.failure;
       });
   }
 

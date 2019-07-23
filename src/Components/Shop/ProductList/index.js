@@ -3,6 +3,8 @@ import "./style.css";
 import EachProduct from "./EachProduct";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
+import apiStates from "../../../Constants/apiState";
+
 import { observer } from "mobx-react";
 @observer
 class ProductList extends Component {
@@ -24,9 +26,10 @@ class ProductList extends Component {
     return products;
   };
   renderMainPage = () => {
-    if (this.props.shopStore.apiState === "Failure") {
+    console.log(this.props.shopStore.apiState);
+    if (this.props.shopStore.apiState === apiStates.failure) {
       return <ErrorMessage />;
-    } else if (this.props.shopStore.apiState === "Loading") {
+    } else if (this.props.shopStore.apiState === apiStates.loading) {
       return <Loader />;
     } else {
       return <div class="all-products">{this.renderProductList()}</div>;

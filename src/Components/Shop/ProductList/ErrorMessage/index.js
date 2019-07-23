@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./style.css";
 import { observer } from "mobx-react";
 @observer
 class ErrorMessage extends Component {
