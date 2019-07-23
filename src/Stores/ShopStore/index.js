@@ -2,6 +2,7 @@ import { observable, action, computed } from "mobx";
 import products from "../../Constants/productList";
 import CartStore from "../CartStore";
 import apiStates from "../../Constants/apiState";
+import priceFilters from "../../Constants/filters/priceFilters";
 class ShopStore {
   @observable productList = [];
   @observable apiState = apiStates.loading;
@@ -25,7 +26,7 @@ class ShopStore {
   }
 
   @observable selectedSizes = [];
-  @observable selectSortBy = "select";
+  @observable selectSortBy = priceFilters.select;
   @action changeSelectSortBy(value) {
     this.selectSortBy = value;
   }
@@ -54,12 +55,12 @@ class ShopStore {
       });
     }
 
-    if (this.selectSortBy === "low-to-high") {
+    if (this.selectSortBy === priceFilters.lowtohigh) {
       filteredList.sort((a, b) => {
         return a.price > b.price ? 1 : b.price > a.price ? -1 : 0;
       });
     }
-    if (this.selectSortBy === "high-to-low") {
+    if (this.selectSortBy === priceFilters.hightolow) {
       filteredList.sort((a, b) => {
         return a.price < b.price ? 1 : b.price > a.price ? -1 : 0;
       });

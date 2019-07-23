@@ -4,7 +4,7 @@ import EachProduct from "./EachProduct";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
 import apiStates from "../../../Constants/apiState";
-
+import filters from "../../../Constants/filters/priceFilters";
 import { observer } from "mobx-react";
 @observer
 class ProductList extends Component {
@@ -26,7 +26,6 @@ class ProductList extends Component {
     return products;
   };
   renderMainPage = () => {
-    console.log(this.props.shopStore.apiState);
     if (this.props.shopStore.apiState === apiStates.failure) {
       return <ErrorMessage />;
     } else if (this.props.shopStore.apiState === apiStates.loading) {
@@ -42,9 +41,9 @@ class ProductList extends Component {
           {this.props.shopStore.getSelectedProducts.length} Product(s) found
         </span>
         <select class="sort" onChange={this.handleSelect}>
-          <option value="select">select</option>
-          <option value="low-to-high">low-to-high</option>
-          <option value="high-to-low">high-to-low</option>
+          <option value={filters.select}>select</option>
+          <option value={filters.lowtohigh}>low-to-high</option>
+          <option value={filters.hightolow}>high-to-low</option>
         </select>
         {this.renderMainPage()}
       </div>

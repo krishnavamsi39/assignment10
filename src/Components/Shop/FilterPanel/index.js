@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import sizes from "../../../Constants/filters/sizes";
 import "./style.css";
 import { observer } from "mobx-react";
 @observer
@@ -8,9 +8,10 @@ class FilterPanel extends Component {
     this.props.shopStore.AddorRemoveSizes(e.target.value);
   };
   renderSizes = () => {
-    let sizeList = ["XS", "S", "M", "ML", "L", "XL", "XXL"];
+    let sizeList = Object.values(sizes);
+
     let buttonclass;
-    const sizes = sizeList.map(size => {
+    const allsizes = sizeList.map(size => {
       if (this.props.shopStore.selectedSizes.indexOf(size) === -1) {
         buttonclass = "size";
       } else {
@@ -22,7 +23,7 @@ class FilterPanel extends Component {
         </button>
       );
     });
-    return sizes;
+    return allsizes;
   };
 
   render() {
