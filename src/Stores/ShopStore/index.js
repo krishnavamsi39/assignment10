@@ -17,8 +17,8 @@ class ShopStore {
         return res.json();
       })
       .then(output => {
-        this.productList = output.products;
         this.apiState = apiStates.success;
+        this.productList = output.products;
       })
       .catch(err => {
         this.apiState = apiStates.failure;

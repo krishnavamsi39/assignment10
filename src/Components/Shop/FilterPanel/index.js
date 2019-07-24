@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import sizes from "../../../Constants/filters/sizes";
-import "./style.css";
+import { Filter, Button, SelectedButton } from "./styledComponents";
 import { observer } from "mobx-react";
 @observer
 class FilterPanel extends Component {
@@ -13,21 +13,24 @@ class FilterPanel extends Component {
     let buttonclass;
     const allsizes = sizeList.map(size => {
       if (this.props.shopStore.selectedSizes.indexOf(size) === -1) {
-        buttonclass = "size";
+        return (
+          <Button onClick={this.handleClick} value={size}>
+            {size}
+          </Button>
+        );
       } else {
-        buttonclass = "selected-size";
+        return (
+          <SelectedButton onClick={this.handleClick} value={size}>
+            {size}
+          </SelectedButton>
+        );
       }
-      return (
-        <button className={buttonclass} onClick={this.handleClick} value={size}>
-          {size}
-        </button>
-      );
     });
     return allsizes;
   };
 
   render() {
-    return <div className="Filter">{this.renderSizes()}</div>;
+    return <Filter>{this.renderSizes()}</Filter>;
   }
 }
 export default FilterPanel;
