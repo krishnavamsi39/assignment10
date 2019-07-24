@@ -2,6 +2,7 @@ import styled from "styled-components";
 export const CartFooter = styled.div`
   display: flex;
   height: 200px;
+
   justify-content: space-around;
   border: 1px solid black;
 `;

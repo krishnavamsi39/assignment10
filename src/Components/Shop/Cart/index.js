@@ -32,7 +32,12 @@ class Cart extends Component {
     return (
       <CartBox>
         <Image src={this.src} height="40px" onClick={this.handleClick} />
-        <CartCount>{this.props.shopStore.cartStore.cartCount}</CartCount>
+        {this.state.showCart ? (
+          <></>
+        ) : (
+          <CartCount>{this.props.shopStore.cartStore.cartCount}</CartCount>
+        )}
+
         {!this.state.showCart ? (
           <DisplayCart />
         ) : (

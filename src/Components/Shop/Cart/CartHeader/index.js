@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { CartHead, CartCount, Image, Span } from "./styledComponents";
+import { CartHead, Image, Span } from "./styledComponents";
 import { observer } from "mobx-react";
+import { CartCount } from "../styledComponents";
 @observer
 class CartHeader extends Component {
   render() {

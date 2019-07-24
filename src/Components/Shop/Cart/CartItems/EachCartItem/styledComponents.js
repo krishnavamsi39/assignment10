@@ -13,20 +13,7 @@ export const ItemProperties = styled.div`
   left: 40px;
   top: 50px;
 `;
-export const CartCount = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: yellow;
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  color: black;
-  text-align: center;
-  position: relative;
-  top: 30px;
-  right: 10px;
-`;
+
 export const ItemTitle = styled.span`
   color: white;
   font-size: 22px;
