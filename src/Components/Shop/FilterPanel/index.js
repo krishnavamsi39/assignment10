@@ -10,7 +10,6 @@ class FilterPanel extends Component {
   renderSizes = () => {
     let sizeList = Object.values(sizes);
 
-    let buttonclass;
     const allsizes = sizeList.map(size => {
       if (this.props.shopStore.selectedSizes.indexOf(size) === -1) {
         return (

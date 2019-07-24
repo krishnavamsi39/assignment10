@@ -31,15 +31,13 @@ class EachProduct extends Component {
           {price}
         </Span>
         {installments > 1 ? (
-          <Span class>
+          <Span>
             or {installments}x${this.installmentPrice()}
           </Span>
         ) : (
           <></>
         )}
-        <Button class="cart" onClick={this.handleClick}>
-          Add to cart
-        </Button>
+        <Button onClick={this.handleClick}>Add to cart</Button>
       </ItemDiv>
     );
   }

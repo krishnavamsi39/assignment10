@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { AllProductsContainer, Select, ProductCount } from "./styledComponents";
+import {
+  AllProductsContainer,
+  Select,
+  ProductCount,
+  Option
+} from "./styledComponents";
 import EachProduct from "./EachProduct";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
@@ -38,17 +43,17 @@ class ProductList extends Component {
   };
   render() {
     return (
-      <div>
+      <>
         <ProductCount>
           {this.props.shopStore.getSelectedProducts.length} Product(s) found
         </ProductCount>
         <Select onChange={this.handleSelect}>
-          <option value={filters.select}>select</option>
-          <option value={filters.lowtohigh}>low-to-high</option>
-          <option value={filters.hightolow}>high-to-low</option>
+          <Option value={filters.select}>select</Option>
+          <Option value={filters.lowtohigh}>low-to-high</Option>
+          <Option value={filters.hightolow}>high-to-low</Option>
         </Select>
         {this.renderMainPage()}
-      </div>
+      </>
     );
   }
 }

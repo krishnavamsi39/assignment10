@@ -14,3 +14,4 @@ export const Select = styled.select`
   right: 180px;
   top: 40px;
 `;
+export const Option = styled.option``;

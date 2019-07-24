@@ -6,11 +6,7 @@ import ShopStore from "./Stores/ShopStore";
 var shopStore = new ShopStore();
 
 function App() {
-  return (
-    <div className="App">
-      <Shop shopStore={shopStore} />
-    </div>
-  );
+  return <Shop shopStore={shopStore} />;
 }
 
 export default App;

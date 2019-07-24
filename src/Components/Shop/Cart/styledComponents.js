@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 export const CartBox = styled.div`
   position: fixed;
   top: 0px;
@@ -25,20 +25,19 @@ export const Image = styled.img`
   right: 0px;
   cursor: pointer;
 `;
+
 export const DisplayCart = styled.div`
-  width: 800px;
+  width: 0px;
   height: 1000px;
   background-color: rgba(0, 0, 0, 0.93);
   display: flex;
   color: white;
   flex-direction: column;
-  transition: 2s;
-  overflow: scroll;
-`;
-export const HideCart = styled.div`
-  width: 0px;
-  height: 1000px;
-  background-color: black;
-  transition: 2s;
-  visibility: hidden;
+  transition: 0.5s
+  overflow:scroll;
+    ${props =>
+      props.show &&
+      css`
+        width: 800px;
+      `};
 `;

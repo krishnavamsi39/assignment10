@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
-import {
-  CartBox,
-  CartCount,
-  Image,
-  DisplayCart,
-  HideCart
-} from "./styledComponents";
+import { CartBox, CartCount, Image, DisplayCart } from "./styledComponents";
 import CartHeader from "./CartHeader";
 import CartItems from "./CartItems";
 import CartTotal from "./CartTotal";
@@ -16,24 +10,21 @@ class Cart extends Component {
   constructor(props) {
     super(props);
     this.value = 0;
-    this.cartcountclass = "cart-count";
     this.src = "assets/images.png";
-    this.state = { classdiv: "cart-display-hide" };
+    this.state = { showCart: false };
   }
   handleClick = () => {
     this.value = !this.value;
 
     if (this.value === true) {
-      this.cartcountclass = "cart-count-hide";
       this.src = "assets/cross.png";
       this.setState({
-        classdiv: "cart-display"
+        showCart: true
       });
     } else {
-      this.cartcountclass = "cart-count";
       this.src = "assets/images.png";
       this.setState({
-        classdiv: "cart-display-hide"
+        showCart: false
       });
     }
   };
@@ -41,11 +32,11 @@ class Cart extends Component {
     return (
       <CartBox>
         <Image src={this.src} height="40px" onClick={this.handleClick} />
-        <CartCount> {this.props.shopStore.cartStore.cartCount}</CartCount>
-        {this.state.classdiv === "cart-display-hide" ? (
-          <HideCart />
+        <CartCount>{this.props.shopStore.cartStore.cartCount}</CartCount>
+        {!this.state.showCart ? (
+          <DisplayCart />
         ) : (
-          <DisplayCart>
+          <DisplayCart show>
             <CartHeader shopStore={this.props.shopStore} />
             <CartItems shopStore={this.props.shopStore} />
             <CartTotal shopStore={this.props.shopStore} />
