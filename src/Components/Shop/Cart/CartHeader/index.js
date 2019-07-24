@@ -1,23 +1,19 @@
 import React, { Component } from "react";
-import "./style.css";
+import { CartHead, CartCount, Image, Span } from "./styledComponents";
 import { observer } from "mobx-react";
 @observer
 class CartHeader extends Component {
   render() {
     return (
-      <div class="cart-header">
-        <img
-          className="cart-image"
+      <CartHead>
+        <Image
           src="assets/images.png"
           height="40px"
           onClick={this.handleClick}
         />
-        <div className="cart-count">
-          {" "}
-          {this.props.shopStore.cartStore.cartCount}
-        </div>
-        <span class="cart-heading">Cart</span>
-      </div>
+        <CartCount> {this.props.shopStore.cartStore.cartCount}</CartCount>
+        <Span>Cart</Span>
+      </CartHead>
     );
   }
 }

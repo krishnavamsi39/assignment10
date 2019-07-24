@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import "./style.css";
+import {
+  CartBox,
+  CartCount,
+  Image,
+  DisplayCart,
+  HideCart
+} from "./styledComponents";
 import CartHeader from "./CartHeader";
 import CartItems from "./CartItems";
 import CartTotal from "./CartTotal";
@@ -32,23 +39,19 @@ class Cart extends Component {
   };
   render() {
     return (
-      <div class="cart-box">
-        <img
-          className="cart-image"
-          src={this.src}
-          height="40px"
-          onClick={this.handleClick}
-        />
-        <div className={this.cartcountclass}>
-          {" "}
-          {this.props.shopStore.cartStore.cartCount}
-        </div>
-        <div className={this.state.classdiv}>
-          <CartHeader shopStore={this.props.shopStore} />
-          <CartItems shopStore={this.props.shopStore} />
-          <CartTotal shopStore={this.props.shopStore} />
-        </div>
-      </div>
+      <CartBox>
+        <Image src={this.src} height="40px" onClick={this.handleClick} />
+        <CartCount> {this.props.shopStore.cartStore.cartCount}</CartCount>
+        {this.state.classdiv === "cart-display-hide" ? (
+          <HideCart />
+        ) : (
+          <DisplayCart>
+            <CartHeader shopStore={this.props.shopStore} />
+            <CartItems shopStore={this.props.shopStore} />
+            <CartTotal shopStore={this.props.shopStore} />
+          </DisplayCart>
+        )}
+      </CartBox>
     );
   }
 }

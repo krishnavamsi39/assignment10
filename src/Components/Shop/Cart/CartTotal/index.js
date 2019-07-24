@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import "./style.css";
+
+import {
+  CartFooter,
+  FooterHeading,
+  CheckOut,
+  Total,
+  Installment,
+  EmptyCart
+} from "./styledComponents";
 import { observer } from "mobx-react";
 @observer
 class CartTotal extends Component {
@@ -7,19 +15,17 @@ class CartTotal extends Component {
     return (
       <>
         {this.props.shopStore.cartStore.cartMap.size > 0 ? (
-          <div class="cart-footer">
-            <span class="footer-heading">SUBTOTAL</span>
-            <button class="check-out">CheckOut</button>
-            <span class="total-price">
-              ${this.props.shopStore.cartStore.total[0]}{" "}
-            </span>
-            <span class="installment-price">
+          <CartFooter>
+            <FooterHeading>SUBTOTAL</FooterHeading>
+            <CheckOut>CheckOut</CheckOut>
+            <Total>${this.props.shopStore.cartStore.total[0]} </Total>
+            <Installment>
               OR UPTO {this.props.shopStore.cartStore.total[1]}x{" "}
               {this.props.shopStore.cartStore.total[2]}
-            </span>
-          </div>
+            </Installment>
+          </CartFooter>
         ) : (
-          <span class="empty-cart">Add Some Products To Cart</span>
+          <EmptyCart>Add Some Products To Cart</EmptyCart>
         )}
       </>
     );

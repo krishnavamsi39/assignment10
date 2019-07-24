@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./style.css";
+import { Div } from "./styledComponents";
 import { observer } from "mobx-react";
 @observer
 class Loader extends Component {
   render() {
-    return <div class="loader" />;
+    return <Div />;
   }
 }
 export default Loader;

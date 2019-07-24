@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import { AllProductsContainer, Select, ProductCount } from "./styledComponents";
 import EachProduct from "./EachProduct";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
@@ -31,20 +31,22 @@ class ProductList extends Component {
     } else if (this.props.shopStore.apiState === apiStates.loading) {
       return <Loader />;
     } else {
-      return <div class="all-products">{this.renderProductList()}</div>;
+      return (
+        <AllProductsContainer>{this.renderProductList()}</AllProductsContainer>
+      );
     }
   };
   render() {
     return (
       <div>
-        <span class="product-count">
+        <ProductCount>
           {this.props.shopStore.getSelectedProducts.length} Product(s) found
-        </span>
-        <select class="sort" onChange={this.handleSelect}>
+        </ProductCount>
+        <Select onChange={this.handleSelect}>
           <option value={filters.select}>select</option>
           <option value={filters.lowtohigh}>low-to-high</option>
           <option value={filters.hightolow}>high-to-low</option>
-        </select>
+        </Select>
         {this.renderMainPage()}
       </div>
     );

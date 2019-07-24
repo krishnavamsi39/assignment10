@@ -1,5 +1,17 @@
 import React, { Component } from "react";
-import "./style.css";
+
+import {
+  CartItem,
+  ItemProperties,
+  Image,
+  ItemPrice,
+  ItemTitle,
+  DeleteIcon,
+  Span,
+  Strike,
+  StrikePrice,
+  StrikeTitle
+} from "./styledComponents";
 import { observer } from "mobx-react";
 @observer
 class EachCartItem extends Component {
@@ -18,40 +30,37 @@ class EachCartItem extends Component {
     const row = productList.map(product => {
       if (product.id === this.props.cartItem) {
         return (
-          <div class="cart-item-div">
-            <img className="cart-image" src={product.image} height="150px" />
-            <div class="item-properties">
+          <CartItem>
+            <Image src={product.image} height="150px" />
+            <ItemProperties>
               {this.state.hover ? (
-                <span className="item-title">{product.title}</span>
+                <ItemTitle>{product.title}</ItemTitle>
               ) : (
-                <strike className="item-title">{product.title}</strike>
+                <StrikeTitle>{product.title}</StrikeTitle>
               )}
               {this.state.hover ? (
-                <span className="item-size">{product.availableSizes[0]}</span>
+                <Span>{product.availableSizes[0]}</Span>
               ) : (
-                <strike className="item-size">
-                  {product.availableSizes[0]}
-                </strike>
+                <Strike>{product.availableSizes[0]}</Strike>
               )}
               {this.state.hover ? (
-                <span className="item-quantity">
+                <Span>
                   Quantity:{" "}
                   {this.props.shopStore.cartStore.cartMap.get(
                     this.props.cartItem
                   )}
-                </span>
+                </Span>
               ) : (
-                <strike className="item-quantity">
+                <Strike>
                   Quantity:{" "}
                   {this.props.shopStore.cartStore.cartMap.get(
                     this.props.cartItem
                   )}
-                </strike>
+                </Strike>
               )}
-            </div>
+            </ItemProperties>
 
-            <img
-              className="delete-icon"
+            <DeleteIcon
               src="assets/smallcross.png"
               height="30px"
               width="30px"
@@ -60,11 +69,11 @@ class EachCartItem extends Component {
               onMouseLeave={this.handlehover}
             />
             {this.state.hover ? (
-              <span className="item-price">${product.price}</span>
+              <ItemPrice>${product.price}</ItemPrice>
             ) : (
-              <strike className="item-price">${product.price}</strike>
+              <StrikePrice>${product.price}</StrikePrice>
             )}
-          </div>
+          </CartItem>
         );
       }
     });

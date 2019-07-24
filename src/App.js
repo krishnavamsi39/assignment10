@@ -2,7 +2,7 @@ import React from "react";
 import Shop from "./Components/Shop";
 import "./App.css";
 import ShopStore from "./Stores/ShopStore";
-import styled from "styled-components";
+
 var shopStore = new ShopStore();
 
 function App() {

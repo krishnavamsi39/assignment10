@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./style.css";
+
+import { ItemDiv, Button, FreeShip, Span, Image, P } from "./styledComponents";
 import { observer } from "mobx-react";
 @observer
 class EachProduct extends Component {
@@ -21,29 +22,25 @@ class EachProduct extends Component {
       isFreeShipping
     } = this.props;
     return (
-      <div class="item-div">
-        {isFreeShipping ? (
-          <button class="free-ship">Free Shipping</button>
-        ) : (
-          <></>
-        )}
-        <img src={image} />
-        <p>{title}</p>
-        <span>
+      <ItemDiv>
+        {isFreeShipping ? <FreeShip>Free Shipping</FreeShip> : <></>}
+        <Image src={image} />
+        <P>{title}</P>
+        <Span>
           {currencyFormat}
           {price}
-        </span>
+        </Span>
         {installments > 1 ? (
-          <span class>
+          <Span class>
             or {installments}x${this.installmentPrice()}
-          </span>
+          </Span>
         ) : (
           <></>
         )}
-        <button class="cart" onClick={this.handleClick}>
+        <Button class="cart" onClick={this.handleClick}>
           Add to cart
-        </button>
-      </div>
+        </Button>
+      </ItemDiv>
     );
   }
 }
