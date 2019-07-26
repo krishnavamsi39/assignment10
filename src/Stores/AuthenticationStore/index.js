@@ -2,8 +2,8 @@ import { observable, action, computed } from "mobx";
 import * as Cookies from "js-cookie";
 class AuthenticationStore {
   @observable status = true;
-  @observable isLoggedIn = false;
-  loginDetails(details) {
+  isLoggedIn = false;
+  loginDetails(details, DisplayHomePage) {
     const options = {
       method: "POST",
       body: JSON.stringify(details),
@@ -26,12 +26,15 @@ class AuthenticationStore {
       })
       .then(res => {
         console.log(res);
-        Cookies.set(res.accessToken);
+        this.isLoggedIn = true;
+        Cookies.set("login", res.accessToken);
+        DisplayHomePage();
       })
       .catch(err => {
         this.isLoggedIn = false;
         console.log("Error, with message:", err.statusText);
         alert("Login failed");
+        Cookies.remove("login");
       });
   }
   sendDetails(details) {

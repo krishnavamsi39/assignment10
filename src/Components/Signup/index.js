@@ -5,7 +5,7 @@ import { Input, Div, Span, Button, H2 } from "../styledComponents";
 import Loader from "../Shop/ProductList/Loader";
 import AuthenticationStore from "../../Stores/AuthenticationStore";
 var authenticationStore = new AuthenticationStore();
-@observer
+
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +48,7 @@ class Signup extends Component {
 
         <Button onClick={this.handleClick}>Signup</Button>
         <Span>Or</Span>
-        <Link to="/">
+        <Link to="/login">
           <Button>Login</Button>
         </Link>
       </Div>
