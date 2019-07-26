@@ -3,6 +3,7 @@ import products from "../../Constants/productList";
 import CartStore from "../CartStore";
 import apiStates from "../../Constants/apiState";
 import priceFilters from "../../Constants/filters/priceFilters";
+
 class ShopStore {
   @observable productList = [];
   @observable apiState = apiStates.loading;
