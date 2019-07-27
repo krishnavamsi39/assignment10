@@ -2,7 +2,7 @@ import { observable, action, computed } from "mobx";
 import CartStore from "../CartStore";
 import apiStates from "../../Constants/apiState";
 import priceFilters from "../../Constants/filters/priceFilters";
-import * as Cookies from "js-cookie";
+
 import fetchApiUtils from "../../Utils/FetchApiUtils";
 class ShopStore {
   @observable productList = [];
