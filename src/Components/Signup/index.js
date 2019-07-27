@@ -1,11 +1,20 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { observer } from "mobx-react";
-import { Input, Div, Span, Button, H2 } from "../styledComponents";
-import Loader from "../Shop/ProductList/Loader";
+import {
+  Input,
+  Div,
+  Span,
+  Button,
+  H2,
+  Loader,
+  Message,
+  FailureMessage
+} from "../styledComponents";
+
 import AuthenticationStore from "../../Stores/AuthenticationStore";
 var authenticationStore = new AuthenticationStore();
-
+@observer
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -18,40 +27,52 @@ class Signup extends Component {
     };
     authenticationStore.sendDetails(userdetails);
 
-    this.setState({ username: "", password: "", showMessage: true });
+    this.setState({ username: "", password: "" });
   };
   handleUsername = e => {
-    this.setState({ username: e.target.value, showMessage: false });
+    this.setState({ username: e.target.value });
   };
   handlePassword = e => {
-    this.setState({ password: e.target.value, showMessage: false });
+    this.setState({ password: e.target.value });
   };
-
+  renderMessage = () => {
+    if (authenticationStore.authState !== "success") {
+      return <FailureMessage>{authenticationStore.authState}</FailureMessage>;
+    } else if (authenticationStore.authState === "success") {
+      return <Message>Registered successfully</Message>;
+    } else {
+      return;
+    }
+  };
   render() {
     return (
-      <Div>
-        <H2>Signup Page</H2>
-        <Span> User Name </Span>
+      <>
+        <Div>
+          <H2>Signup Page</H2>
+          <Span> User Name </Span>
 
-        <Input
-          value={this.state.username}
-          onChange={this.handleUsername}
-          type="text"
-        />
+          <Input
+            value={this.state.username}
+            onChange={this.handleUsername}
+            type="text"
+          />
 
-        <Span> Password</Span>
-        <Input
-          value={this.state.password}
-          onChange={this.handlePassword}
-          type="password"
-        />
+          <Span> Password</Span>
+          <Input
+            value={this.state.password}
+            onChange={this.handlePassword}
+            type="password"
+          />
 
-        <Button onClick={this.handleClick}>Signup</Button>
-        <Span>Or</Span>
-        <Link to="/login">
-          <Button>Login</Button>
-        </Link>
-      </Div>
+          <Button onClick={this.handleClick}>Signup</Button>
+          <Span>Or</Span>
+          <Link to="/login">
+            <Button>Login</Button>
+          </Link>
+          {authenticationStore.isLoading ? <Loader /> : <></>}
+        </Div>
+        {this.renderMessage()}
+      </>
     );
   }
 }

@@ -1,9 +1,8 @@
 import { observable, action, computed } from "mobx";
-import products from "../../Constants/productList";
 import CartStore from "../CartStore";
 import apiStates from "../../Constants/apiState";
 import priceFilters from "../../Constants/filters/priceFilters";
-
+import * as Cookies from "js-cookie";
 class ShopStore {
   @observable productList = [];
   @observable apiState = apiStates.loading;

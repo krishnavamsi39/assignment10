@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
 export const Input = styled.input`
   width: 220px;
   background: #ffffff;
@@ -39,4 +40,36 @@ export const Button = styled.button`
 export const H2 = styled.h2`
   position: relative;
   text-align: center;
+`;
+const spin = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+export const Message = styled(Span)`
+  position: absolute;
+  top: 50px;
+  left: 750px;
+  color: green;
+`;
+export const FailureMessage = styled(Span)`
+  position: absolute;
+  top: 50px;
+  left: 750px;
+  color: red;
+`;
+export const Loader = styled.div`
+  position: relative;
+  bottom: 120px;
+  right: 60px;
+  border: 4px solid white;
+  border-radius: 50%;
+  border-top: 4px solid black;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: ${spin} 2s linear infinite;
 `;

@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect
-} from "react-router-dom";
-import { Input, Div, Span, Button, H2 } from "../styledComponents";
+  Input,
+  Div,
+  Span,
+  Button,
+  H2,
+  Loader,
+  Message,
+  FailureMessage
+} from "../styledComponents";
 import AuthenticationStore from "../../Stores/AuthenticationStore";
 import { observer } from "mobx-react";
-import * as Cookies from "js-cookie";
 
 var authenticationStore = new AuthenticationStore();
 @observer
@@ -37,30 +40,41 @@ class Login extends Component {
   handlePassword = e => {
     this.setState({ password: e.target.value });
   };
+  renderMessage = () => {
+    if (authenticationStore.authState !== "success") {
+      return <FailureMessage>{authenticationStore.authState}</FailureMessage>;
+    } else {
+      return;
+    }
+  };
   render() {
     return (
-      <Div>
-        <H2>Login Page</H2>
-        <Span> User Name </Span>
+      <>
+        <Div>
+          <H2>Login Page</H2>
+          <Span> User Name </Span>
 
-        <Input
-          value={this.state.username}
-          onChange={this.handleUsername}
-          type="text"
-        />
+          <Input
+            value={this.state.username}
+            onChange={this.handleUsername}
+            type="text"
+          />
 
-        <Span> Password</Span>
-        <Input
-          value={this.state.password}
-          onChange={this.handlePassword}
-          type="password"
-        />
-        <Button onClick={this.handleClick}>Login</Button>
-        <Span>Or</Span>
-        <Link to="/signup">
-          <Button>Signup</Button>
-        </Link>
-      </Div>
+          <Span> Password</Span>
+          <Input
+            value={this.state.password}
+            onChange={this.handlePassword}
+            type="password"
+          />
+          <Button onClick={this.handleClick}>Login</Button>
+          <Span>Or</Span>
+          <Link to="/signup">
+            <Button>Signup</Button>
+          </Link>
+          {authenticationStore.isLoading ? <Loader /> : <></>}
+        </Div>
+        {this.renderMessage()}
+      </>
     );
   }
 }
