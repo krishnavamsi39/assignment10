@@ -12,7 +12,15 @@ class ShopStore {
   }
 
   getProducts() {
-    fetch("https://demo8129378.mockable.io/products/all/v1")
+    const options = {
+      method: "POST",
+
+      headers: {
+        authorization: Cookies.get("login"),
+        "Content-Type": "application/json"
+      }
+    };
+    fetch("https://user-shopping-cart.getsandbox.com/products/v1/", options)
       .then(res => {
         return res.json();
       })

@@ -9,7 +9,8 @@ import {
   H2,
   Loader,
   Message,
-  FailureMessage
+  FailureMessage,
+  Box
 } from "../styledComponents";
 
 import AuthenticationStore from "../../Stores/AuthenticationStore";
@@ -35,13 +36,17 @@ class Signup extends Component {
   handlePassword = e => {
     this.setState({ password: e.target.value });
   };
+  handleFocus = () => {
+    authenticationStore.setAuthState();
+  };
   renderMessage = () => {
+    if (authenticationStore.authState === "") {
+      return;
+    }
     if (authenticationStore.authState !== "success") {
       return <FailureMessage>{authenticationStore.authState}</FailureMessage>;
     } else if (authenticationStore.authState === "success") {
       return <Message>Registered successfully</Message>;
-    } else {
-      return;
     }
   };
   render() {
@@ -49,27 +54,29 @@ class Signup extends Component {
       <>
         <Div>
           <H2>Signup Page</H2>
-          <Span> User Name </Span>
 
           <Input
+            placeholder="User name"
             value={this.state.username}
             onChange={this.handleUsername}
+            onFocus={this.handleFocus}
             type="text"
           />
 
-          <Span> Password</Span>
           <Input
+            placeholder="Password"
             value={this.state.password}
             onChange={this.handlePassword}
             type="password"
           />
-
-          <Button onClick={this.handleClick}>Signup</Button>
-          <Span>Or</Span>
-          <Link to="/login">
-            <Button>Login</Button>
-          </Link>
-          {authenticationStore.isLoading ? <Loader /> : <></>}
+          <Box>
+            <Button onClick={this.handleClick}>Signup</Button>
+            <Span>Or</Span>
+            <Link to="/login">
+              <Button>Login</Button>
+            </Link>
+            {authenticationStore.isLoading ? <Loader /> : <></>}
+          </Box>
         </Div>
         {this.renderMessage()}
       </>

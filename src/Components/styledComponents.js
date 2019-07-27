@@ -6,6 +6,12 @@ export const Input = styled.input`
   padding: 7px 14px;
   margin: 0px 0px 20px;
 `;
+export const Box = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  bottom: -50px;
+`;
 export const Div = styled.div`
   position: absolute;
   top: 10%;
@@ -36,9 +42,11 @@ export const Button = styled.button`
 
   width: 250px;
   font-size: 20px;
+  bottom: 50px;
 `;
 export const H2 = styled.h2`
-  position: relative;
+  position: absolute;
+  top: 50px;
   text-align: center;
 `;
 const spin = keyframes`
@@ -51,20 +59,20 @@ const spin = keyframes`
 `;
 export const Message = styled(Span)`
   position: absolute;
-  top: 50px;
-  left: 750px;
+  top: 350px;
+  left: 680px;
   color: green;
 `;
 export const FailureMessage = styled(Span)`
   position: absolute;
-  top: 50px;
-  left: 750px;
+  top: 350px;
+  left: 680px;
   color: red;
 `;
 export const Loader = styled.div`
   position: relative;
   bottom: 120px;
-  right: 60px;
+  right: -30px;
   border: 4px solid white;
   border-radius: 50%;
   border-top: 4px solid black;

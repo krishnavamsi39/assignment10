@@ -12,6 +12,6 @@ export const ProductCount = styled.span`
 export const Select = styled.select`
   position: absolute;
   right: 180px;
-  top: 40px;
+  top: 60px;
 `;
 export const Option = styled.option``;
