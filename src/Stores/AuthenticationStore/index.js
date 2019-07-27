@@ -1,22 +1,13 @@
 import { observable, action, computed } from "mobx";
 import * as Cookies from "js-cookie";
+import fetchApiAuthUtils from "../../Utils/FetchApiAuthUtils";
 class AuthenticationStore {
   @observable authState = "";
   isLoggedIn = false;
   @observable isLoading = false;
-  fetchAuth(endpoint, details) {
-    this.isLoading = true;
-    const options = {
-      method: "POST",
-      body: JSON.stringify(details),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
-    return fetch(endpoint, options);
-  }
   loginDetails(details, DisplayHomePage) {
-    this.fetchAuth(
+    this.isLoading = true;
+    fetchApiAuthUtils(
       "https://user-shopping-cart.getsandbox.com/login/v1/",
       details
     )
@@ -48,7 +39,7 @@ class AuthenticationStore {
     this.authState = "";
   }
   sendDetails(details) {
-    this.fetchAuth(
+    fetchApiAuthUtils(
       "https://user-shopping-cart.getsandbox.com/sign_up/v1/",
       details
     )

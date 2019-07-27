@@ -3,6 +3,7 @@ import CartStore from "../CartStore";
 import apiStates from "../../Constants/apiState";
 import priceFilters from "../../Constants/filters/priceFilters";
 import * as Cookies from "js-cookie";
+import fetchApiUtils from "../../Utils/FetchApiUtils";
 class ShopStore {
   @observable productList = [];
   @observable apiState = apiStates.loading;
@@ -12,15 +13,7 @@ class ShopStore {
   }
 
   getProducts() {
-    const options = {
-      method: "POST",
-
-      headers: {
-        authorization: Cookies.get("login"),
-        "Content-Type": "application/json"
-      }
-    };
-    fetch("https://user-shopping-cart.getsandbox.com/products/v1/", options)
+    fetchApiUtils("https://user-shopping-cart.getsandbox.com/products/v1/")
       .then(res => {
         return res.json();
       })
