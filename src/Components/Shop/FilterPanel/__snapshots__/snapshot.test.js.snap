@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="sc-bdVaJa eGmJYt"
+>
+  <button
+    className="sc-bwzfXH izuGeA"
+    onClick={[Function]}
+    value="XS"
+  >
+    XS
+  </button>
+  <button
+    className="sc-bwzfXH izuGeA"
+    onClick={[Function]}
+    value="S"
+  >
+    S
+  </button>
+  <button
+    className="sc-bwzfXH izuGeA"
+    onClick={[Function]}
+    value="M"
+  >
+    M
+  </button>
+  <button
+    className="sc-bwzfXH izuGeA"
+    onClick={[Function]}
+    value="ML"
+  >
+    ML
+  </button>
+  <button
+    className="sc-bwzfXH izuGeA"
+    onClick={[Function]}
+    value="L"
+  >
+    L
+  </button>
+  <button
+    className="sc-bwzfXH izuGeA"
+    onClick={[Function]}
+    value="XL"
+  >
+    XL
+  </button>
+  <button
+    className="sc-bwzfXH izuGeA"
+    onClick={[Function]}
+    value="XXL"
+  >
+    XXL
+  </button>
+</div>
+`;
