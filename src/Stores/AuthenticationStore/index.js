@@ -8,7 +8,7 @@ class AuthenticationStore {
   loginDetails(details, DisplayHomePage) {
     this.isLoading = true;
     fetchApiAuthUtils(
-      "https://user-shopping-cart.getsandbox.com/login/v1/",
+      "https://products-cart.getsandbox.com/login/v1/",
       details
     )
       .then(res => {
@@ -40,7 +40,7 @@ class AuthenticationStore {
   }
   sendDetails(details) {
     fetchApiAuthUtils(
-      "https://user-shopping-cart.getsandbox.com/sign_up/v1/",
+      "https://products-cart.getsandbox.com/sign_up/v1/",
       details
     )
       .then(res => {

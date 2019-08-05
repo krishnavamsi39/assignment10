@@ -13,7 +13,7 @@ class ShopStore {
   }
 
   getProducts() {
-    fetchApiUtils("https://user-shopping-cart.getsandbox.com/products/v1/")
+    fetchApiUtils("https://products-cart.getsandbox.com/products/v1/")
       .then(res => {
         return res.json();
       })
@@ -63,7 +63,7 @@ class ShopStore {
     }
     if (this.selectSortBy === priceFilters.hightolow) {
       filteredList.sort((a, b) => {
-        return a.price < b.price ? 1 : b.price > a.price ? -1 : 0;
+        return a.price < b.price ? 1 : b.price < a.price ? -1 : 0;
       });
     }
 

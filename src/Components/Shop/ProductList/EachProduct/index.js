@@ -7,6 +7,7 @@ class EachProduct extends Component {
   handleClick = () => {
     const { id } = this.props;
     this.props.shopStore.cartStore.addToCart(id);
+    
   };
   installmentPrice = () => {
     const { price, installments } = this.props;

@@ -15,6 +15,7 @@ import { observer } from "mobx-react";
 class ProductList extends Component {
   componentDidMount() {
     this.props.shopStore.getProducts();
+    this.props.shopStore.cartStore.getCartItems()
   }
   handleSelect = e => {
     this.props.shopStore.changeSelectSortBy(e.target.value);
